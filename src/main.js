@@ -18,13 +18,14 @@ let isCountryFound = false;
 
 // Get country id
 const getIdFromInput = () => {
+  console.log("---------------------------------------");
+  console.log("Llamando a getIdFromInput()");
   paisId = parseInt(inputCountry.value);
   if (isNaN(paisId)) {
-    console.log('El valor ingresado no es un número válido.')
+    console.log('\tEl valor ingresado no es un número válido.');
     return;
   }
-  console.log("---------------------------------------");
-  console.log("Valor del input: " + paisId);
+  console.log("\tValor del input: " + paisId);
   console.log("---------------------------------------");
 }
 
@@ -32,14 +33,15 @@ const getIdFromInput = () => {
 btnFindCountry.addEventListener('click', () => {
   console.log("---------------------------------------");
   console.log("Llamada al listener del boton buscar pais");
-  console.log("---------------------------------------");
   getIdFromInput();
-
+  
   try {
     findPais(paisId);
+    console.log("\tLlamando a findPais(id) dentro del listener");
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
+  console.log("---------------------------------------");
 
 });
 
@@ -49,7 +51,7 @@ btnFindRegion.addEventListener('click', () => {
   try {
     findRegions(paisId);
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 });
 
@@ -57,34 +59,40 @@ btnFindRegion.addEventListener('click', () => {
 const findPais = async (id) => {
   console.log("---------------------------------------");
   console.log("Llamando a findPais(id)");
-  console.log("---------------------------------------");
   try {
     const pais = await getPais(id);
+    console.log("\tPaís encontrado: " + pais);
     countryNameOutput.textContent = pais;
     isCountryFound = true;
     btnFindRegion.disabled = false;
   } catch (error) {
-    console.log(error);
+    console.error(error.message);
+    console.error("País no encontrado");
     countryNameOutput.textContent = 'País no encontrado';
     btnFindRegion.disabled = true;
   }
   regionsNameOutput.innerHTML = '';
+  console.log("\tReseteado el listado de regiones")
+  console.log("---------------------------------------");
 };
 
 const findRegions = async (id) => {
   console.log("---------------------------------------");
   console.log("Llamando a findRegions(id)");
-  console.log("---------------------------------------");
   try {
     const regiones = await getRegiones(id);
+    console.log("\tRegiones encontradas: " + regiones);
     if (regiones.length === 0) throw new Error("No se encontraron regiones para el país con id " + id);
     regiones.forEach(r => {
       let li = document.createElement('li');
       li.textContent = r;
       regionsNameOutput.appendChild(li);
     });
+    console.log("\tRegiones agregadas al listado")
   } catch (error) {
     console.log(error);
+    console.error("\tRegiones no encontradas");
     regionsNameOutput.textContent = 'Regiones no encontradas';
   }
+  console.log("---------------------------------------");
 };
