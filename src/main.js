@@ -6,7 +6,7 @@ import { getRegiones } from "./services/getRegionService.js";
 
 // Selectors
 const btnFindCountry = document.getElementById('buscar-pais');
-const btnFindRegion = document.getElementById('buscar-region');
+// const btnFindRegion = document.getElementById('buscar-region');
 const inputCountry = document.getElementById('id-pais');
 const countryNameOutput = document.getElementById('nombre-pais');
 const regionsNameOutput = document.getElementById('listado-regiones');
@@ -35,17 +35,41 @@ btnFindCountry.addEventListener('click', () => {
   getIdFromInput();
 
   try {
-    findPais(paisId);
+    findAll(paisId);
   } catch (error) {
   }
 
 });
 
-btnFindRegion.addEventListener('click', () => {
-  if (isNaN(paisId)) return;
+// btnFindRegion.addEventListener('click', () => {
+//   if (isNaN(paisId)) return;
 
-  try {
-    findRegions(paisId);
-  } catch (error) {
-  }
-});
+//   try {
+//     findRegions(paisId);
+//   } catch (error) {
+//   }
+// });
+
+const findAll = (id) => {
+  console.log("---------------------------------------");
+  console.log("Llamando a findAll(id)");
+  console.log("---------------------------------------");
+
+  Promise.all([getPais(id), getRegiones(id)])
+    .then(results => {
+      const pais = results[0];
+      const regiones = results[1];
+      countryNameOutput.textContent = pais;
+      regiones.forEach(region => {
+        const li = document.createElement('li');
+        li.textContent = region;
+        regionsNameOutput.appendChild(li);
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      countryNameOutput.textContent = 'País no encontrado';
+      regionsNameOutput.innerHTML = 'Regiones no encontradas';
+    });
+
+};
