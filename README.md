@@ -1,6 +1,6 @@
 # Actividad
 
-## Practicar Promesas en JavaScript simulando llamadas a una API/BD:
+## Practicar Promesas en JavaScript simulando llamadas a una API/BD
 
 * Crear Promesas con latencia simulada.
 * Consumirlas con `async/await` y con `.then()/.catch()`.
@@ -23,39 +23,54 @@ Estructura del proyecto (cambia el nombre de los servicios por `getPaisService`,
 
 Rama: `feature/ejercicio-uno-promesa-async`
 
-1.1.Crea una función `mostrarPaisAsync(id)` en `src/main.js` que:
-• Llama a `await getPais(id)`.
-• Muestra el resultado o el error en consola (y/o en el DOM).
-• Usa `try/catch` para capturar el rechazo de la promesa.
+Crea una función `mostrarPaisAsync(id)` en `src/main.js` que:
+
+* Llama a `await getPais(id)`.
+* Muestra el resultado o el error en consola (y/o en el DOM).
+* Usa `try/catch` para capturar el rechazo de la promesa.
+
 Criterios de aceptación
-• Usa `async/await` correctamente.
-• Captura errores con `try/catch`.
-• Respeta la latencia simulada (no bloquea nada).
+
+* Usa `async/await` correctamente.
+* Captura errores con `try/catch`.
+* Respeta la latencia simulada (no bloquea nada).
 
 ### Ejercicio 2 — `.then()` y `.catch()` en `main.js`
 
 Rama: `feature/ejercicio-dos-promesa-then`
-2.1.Implementa `mostrarPaisThen(id)` que:
-• Llama a `getPais(id).then(...).catch(...)`.
-• Maneja los errores en `.catch()`.
+
+Implementa `mostrarPaisThen(id)` que:
+
+* Llama a `getPais(id).then(...).catch(...)`.
+* Maneja los errores en `.catch()`.
+
 Criterios de aceptación
-• Uso de `.then()` y `.catch()` correcto.
+
+* Uso de `.then()` y `.catch()` correcto.
 
 ### Ejercicio 3 — Promesas en paralelo con `Promise.all`
 
 Rama: `feature/ejercicio-tres-paralelo`
-3.1.Crea una función `mostrarPaisYRegion(id)` en `src/main.js` que:
-• Añade el servicio `getRegionService`
-• Llama a `Promise.all([getPais(id), getRegion(id)])`
-• Muestra el resultado o el error en consola (y/o en el DOM).
-• Captura errores en catch
+
+Crea una función `mostrarPaisYRegion(id)` en `src/main.js` que:
+
+* Añade el servicio `getRegionService`
+* Llama a `Promise.all([getPais(id), getRegion(id)])`
+* Muestra el resultado o el error en consola (y/o en el DOM).
+* Captura errores en catch
+
 Criterios de aceptación
-• Uso de `Promise.all` con dos promesas reales en paralelo.
-• Manejo de éxito y error.
-• Demostración en consola/DOM.
-Entregables
+
+* Uso de `Promise.all` con dos promesas reales en paralelo.
+* Manejo de éxito y error.
+* Demostración en consola/DOM.
+
+## Entregables
+
 3 PRs separados (uno por rama/ejercicio) hacia main:
-• PR 1: `feature/ejercicio-uno-promesa-async`
-• PR 2: `feature/ejercicio-dos-promesa-then`
-• PR 3: `feature/ejercicio-tres-paralelo`
+
+* PR 1: `feature/ejercicio-uno-promesa-async`
+* PR 2: `feature/ejercicio-dos-promesa-then`
+* PR 3: `feature/ejercicio-tres-paralelo`
+
 Manual con capturas de pantalla de la consola con cada uno de los ejercicios, en el fichero html define una etiqueta `<h1>Trabajando con promesas + NombreAlumno</h1>`
