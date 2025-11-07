@@ -49,3 +49,43 @@ btnFindRegion.addEventListener('click', () => {
   } catch (error) {
   }
 });
+
+const findPais = (id) => {
+  console.log("---------------------------------------");
+  console.log("Llamando a findPais(id)");
+  console.log("---------------------------------------");
+
+  getPais(id)
+    .then(empleado => {
+      countryNameOutput.textContent = empleado;
+      isCountryFound = true;
+      btnFindRegion.disabled = false;
+    })
+    .catch(error => {
+      console.log(error);
+      countryNameOutput.textContent = 'País no encontrado';
+      isCountryFound = false;
+      btnFindRegion.disabled = true;
+    });
+    regionsNameOutput.textContent = '';
+};
+
+const findRegions = (id) => {
+  console.log("---------------------------------------");
+  console.log("Llamando a findRegions(id)");
+  console.log("---------------------------------------");
+
+  getRegiones(id)
+    .then(regiones => {
+      if (regiones.length === 0) throw new Error("No se encontraron regiones para el país con id " + id);
+      regiones.forEach(region => {
+        const li = document.createElement('li');
+        li.textContent = region;
+        regionsNameOutput.appendChild(li);
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      regionsNameOutput.textContent = 'Regiones no encontradas';
+    });
+};
