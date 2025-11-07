@@ -73,4 +73,8 @@ Criterios de aceptación
 * PR 2: `feature/ejercicio-dos-promesa-then`
 * PR 3: `feature/ejercicio-tres-paralelo`
 
-Manual con capturas de pantalla de la consola con cada uno de los ejercicios, en el fichero html define una etiqueta `<h1>Trabajando con promesas + NombreAlumno</h1>`
+Manual con capturas de pantalla de la consola con cada uno de los ejercicios, en el fichero html define una etiqueta
+
+`<h1>Trabajando con promesas + NombreAlumno</h1>`
+
+[Manual con capturas de logs](./MANUAL.md)
