@@ -29,3 +29,7 @@
 ### Ejercicio 3.- Estado `Reject`
 
 ![País no encontrado](./public/img/03-02.png)
+
+## Pull Request
+
+![PR's de los ejercicios](./public/img/PR's.png)
